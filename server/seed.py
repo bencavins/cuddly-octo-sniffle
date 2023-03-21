@@ -1,6 +1,7 @@
 from app import app
 from models import Guest, Episode, Appearance, db
 from faker import Faker
+import random
 
 fake = Faker()
 
@@ -26,18 +27,13 @@ def seed_data():
         ep3.guests = [g2, g4]
 
         db.session.add_all([g1, g2, g3, g4, g5, ep1, ep2, ep3])
-        for ap in g1.appearances:
-            ap.rating = 5
-        for ap in g2.appearances:
-            ap.rating = 4
-        for ap in g3.appearances:
-            ap.rating = 3
-        for ap in g4.appearances:
-            ap.rating = 2
-        for ap in g5.appearances:
-            ap.rating = 1
+        for ap in ep1.appearances:
+            ap.rating = random.randint(1, 5)
+        for ap in ep2.appearances:
+            ap.rating = random.randint(1, 5)
+        for ap in ep3.appearances:
+            ap.rating = random.randint(1, 5)
         db.session.commit()
-
 
 
 if __name__ == '__main__':

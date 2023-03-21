@@ -12,7 +12,7 @@ db = SQLAlchemy(metadata=metadata)
 
 class Episode(db.Model, SerializerMixin):
     __tablename__ = 'episodes'
-    serialize_rules = ('-appearances.episode', '-guests.episodes')
+    serialize_rules = ('-guests.episodes', '-appearances.episode')
 
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.String)
@@ -26,7 +26,7 @@ class Episode(db.Model, SerializerMixin):
 
 class Appearance(db.Model, SerializerMixin):
     __tablename__ = 'appearances'
-    serialize_rules = ('-guests.appearance', '-episodes.appearance')
+    serialize_rules = ('-guest.appearances', '-episode.appearances')
 
     id = db.Column(db.Integer, primary_key=True)
     rating = db.Column(db.Integer)
