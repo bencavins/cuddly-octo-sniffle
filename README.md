@@ -37,11 +37,8 @@ You are not being assessed on React, and you don't have to update any of the Rea
 code; the frontend code is available just so that you can test out the behavior
 of your API in a realistic setting.
 
-There are also tests included which you can run using `pytest -x` to check your work.
-
 Depending on your preference, you can either check your progress by:
 
-- Running `pytest -x` and seeing if your code passes the tests
 - Running the React application in the browser and interacting with the API via
   the frontend
 - Running the Flask server and using Postman to make requests
@@ -69,18 +66,12 @@ Then, run the migrations and seed file:
 ```sh
 flask db revision --autogenerate -m'message'
 flask db upgrade
-python app/seed.py
+python seed.py
 ```
 
 > Note that this seed file uses a CSV file to populate the database. If you
 > aren't able to get the provided seed file working, you are welcome to generate
 > your own seed data to test the application.
-
-## Validations
-
-Add validations to the `Appearance` model:
-
-- must have a `rating` between 1 and 5 (inclusive - 1 and 5 are okay)
 
 ## Routes
 
@@ -219,3 +210,9 @@ data, along with the appropriate HTTP status code:
   "errors": ["validation errors"]
 }
 ```
+
+## Validations (Stretch Goal)
+
+Add validations to the `Appearance` model:
+
+- must have a `rating` between 1 and 5 (inclusive - 1 and 5 are okay)
